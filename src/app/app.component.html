@@ -1,0 +1,107 @@
+<header>
+  <nav class="autohide navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">CinemArt</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active' : isRoute('home')}" routerLink="home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active' : isRoute('movie')}" routerLink="movies" routerLinkActive="active">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{'active' : isRoute('schedule')}" routerLink="schedule" routerLinkActive="active">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">About Us</a>
+        </li>
+        <li class="nav-item" *ngIf="adminLogged()">
+          <a class="nav-link" [ngClass]="{'active' : isRoute('dashboard')}" routerLink="dashboard" routerLinkActive="dashboard">Dashboard</a>
+        </li>
+      </ul>
+
+      <app-login></app-login>
+
+    </div>
+  </nav>
+</header>
+
+<router-outlet></router-outlet>
+
+<!--<div class="container">-->
+<!--  <div class="row justify-content-center">-->
+<!--    <div class="col-sm-12 col-md-11">-->
+
+<!--      -->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
+<div class="footer-cnt">
+  <footer class="pt-4">
+    <div class="container p-4">
+
+      <div class="row justify-content-center">
+
+        <div class="col-6">
+          <h5 class="text-uppercase mb-4">CinemArt</h5>
+
+          <ul class="list-unstyled mb-4">
+            <li>
+              <a href="#!" class="text-white">Schedule</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">About us</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-6">
+          <h5 class="text-uppercase mb-4">Other</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="" class="text-white">Career</a>
+            </li>
+            <li>
+              <a href="" class="text-white">IMDB</a>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+      <div class="row links">
+        <div>
+          <a type="button" class="btn btn-floating btn-lg mr-2"><i class="bi bi-facebook"></i></a>
+
+          <a type="button" class="btn btn-floating btn-lg mr-2"><i class="bi bi-instagram"></i></a>
+
+          <a type="button" class="btn btn-floating btn-lg mr-2"><i class="bi bi-twitter"></i></a>
+
+          <a type="button" class="btn btn-floating btn-lg"><i class="bi bi-google"></i></a>
+
+        </div>
+
+      </div>
+
+    </div>
+o
+
+    <div class="text-center p-3 border-top border-white">
+      © 2022 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">CinemArt.com</a>
+    </div>
+  </footer>
+
+</div>

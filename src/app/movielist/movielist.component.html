@@ -1,0 +1,84 @@
+<div class="container mov-lst">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-11">
+
+      <div class="container movie-list">
+        <div class="row title">
+          <span>Our Movies</span>
+        </div>
+
+        <div class="row controls">
+
+          <div class="col-8 filter-controls">
+
+            <div class="buttons mr-0 p-0">
+              <button type="button" class="btn" [ngClass]="{'active' : showAll}" (click)="cancelFilter()">
+                <span>All</span>
+              </button>
+
+              <button type="button" class="btn" [ngClass]="{'active' : showSoon}" (click)="showNew()">
+                <span>Upcoming</span>
+              </button>
+
+              <div class="dropdown">
+                <button class="btn dropbtn" [ngClass]="{'active' : showGenre}">Genre</button>
+                <div class="dropdown-content" id="dropdown-content">
+                  <a *ngFor="let genre of genres" (click)="filterGenre(genre.id)">{{genre.name}}</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-4 page-controls">
+            <button type="button" [disabled]="!hasPrev" class="btn" (click)="prevPage()">
+              <i class="bi bi-chevron-double-left"></i>
+            </button>
+
+            <span>{{currentPage}}</span>
+
+            <button type="button" [disabled]="!hasNext" class="btn" (click)="nextPage()">
+              <i class="bi bi-chevron-double-right"></i>
+            </button>
+          </div>
+
+        </div>
+
+
+        <div class ="row gy-4 justify-content-center">
+
+          <div class="col-10 col-md-4 col-lg-3 movie-list-item" *ngFor="let movie of getPage()">
+
+            <article class="material-card h-100" (click)="routeDetails(movie.id)">
+              <div [ngClass]="{'container ribbon' : !movie.premiered}"></div>
+              <img class="movie-poster" src="https://dummyimage.com/300x400/C0C0C0/000000.png&text=MOVIE_PIC">
+
+              <div class="txt">
+                <span class="movie-title">{{movie.name}}</span>
+              </div>
+
+              <div class="container genres-list">
+                <div class="row justify-content-center">
+                  <i class="col-1 align-self-top bi bi-camera-reels"></i>
+                  <div class="col-10">
+                <span class="genre" *ngFor="let genre of movie.genres; let last=last">
+                  <span class="genre-name" *ngIf="!last">{{genre.name}}, </span>
+                  <span class="genre-name" *ngIf="last">{{genre.name}}</span>
+                </span>
+                  </div>
+                </div>
+
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

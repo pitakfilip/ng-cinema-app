@@ -1,0 +1,69 @@
+<div *ngIf="!checkLogin">
+  <app-not-found></app-not-found>
+</div>
+
+
+<div *ngIf="checkLogin()">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-11">
+        <app-dash-nav></app-dash-nav>
+
+        <button type="button" class="btn btn-dark">New Voucher</button>
+
+        <div id="voucher-dash">
+          <table id="voucher-dash-table" class="table table-striped table-bordered table-sm" cellspacing="0"
+                 width="100%">
+            <thead>
+            <tr>
+              <th class="th-sm">Id</th>
+              <th class="th-sm">User</th>
+              <th class="th-sm">Code</th>
+              <th class="th-sm">Valid Until</th>
+              <th class="th-sm">Valid</th>
+              <th class="th-sm">Used</th>
+              <th class="th-sm">Type</th>
+              <th class="th-sm">Value</th>
+              <th class="th-sm">Restriction</th>
+              <th class="th-sm">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voucher of allVouchers">
+              <td>{{voucher.id}}</td>
+              <td>({{voucher.userAcc.id}}) {{voucher.userAcc.name}}</td>
+              <td>{{voucher.code}}</td>
+              <td>{{voucher.date}}</td>
+              <td><input type="checkbox" [checked]="voucher.valid"></td>
+              <td><input type="checkbox" [checked]="voucher.used"></td>
+              <td>{{voucher.type}}</td>
+              <td>{{voucher.value}}</td>
+              <td>{{voucher.restriction}}</td>
+              <td>
+                <span>
+                  <button class="btn-dark"><i class="bi bi-trash-fill"></i></button>
+                  <button class="btn-dark"><i class="bi bi-pencil-square"></i></button>
+                </span>
+              </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <th class="th-sm">Id</th>
+              <th class="th-sm">User</th>
+              <th class="th-sm">Code</th>
+              <th class="th-sm">Valid Until</th>
+              <th class="th-sm">Valid</th>
+              <th class="th-sm">Used</th>
+              <th class="th-sm">Type</th>
+              <th class="th-sm">Value</th>
+              <th class="th-sm">Restriction</th>
+              <th class="th-sm">Actions</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

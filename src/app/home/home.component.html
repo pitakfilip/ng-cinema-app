@@ -1,0 +1,31 @@
+<div class="container home-cont">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-11 col-lg-9">
+
+      <div id="hottestMovies" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- generate top6 movies that are active -->
+          <div class="carousel-item" *ngFor="let movie of carousel; let i = index" [ngClass]="{'active': i === 1}">
+            <a href="/movies/{{movie.id}}">
+              <img class = "carousel-img" src="{{'/assets/posters/' + movie.imagepath}}" title="{{movie.name}}">
+            </a>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#hottestMovies" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#hottestMovies" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <div class = "home-banner">
+        <img class = "banner-img" src="assets/img/banner.png">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-movielist></app-movielist>

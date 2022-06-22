@@ -1,0 +1,586 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.page-not-found {
+  text-align: center;
+}
+
+nav {
+  .navbar-brand {
+    margin-left: 2em;
+  }
+
+  button.user, button.logout{
+    background-color: transparent;
+    border-width: 0;
+    color: ghostwhite;
+    //width: 3em;
+  }
+
+  button.user:hover, button.logout:hover{
+    background-color: transparent;
+    color:ghostwhite;
+    filter: brightness(60%);
+  }
+
+  button.user {
+    width: auto;
+    padding-right: 2rem;
+    span {
+      padding: 0;
+      margin: 0;
+    }
+    i {
+      padding-right: 1rem;
+      margin: 0;
+    }
+  }
+
+  .nav-item {
+    padding: 0.5em 1em;
+  }
+
+  i {
+    margin-right: 2em;
+    font-size: 1.6em;
+  }
+}
+
+.carousel {
+  background-color: aqua;
+
+  margin-top:1em;
+  bottom:1em;
+
+  .carousel-item {
+    .carousel-caption.label {
+      background-color: black;
+      display: block;
+    }
+    .carousel-img{
+      text-align: center;
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+
+    .movie-text {
+      display: none;
+    }
+
+    a:hover {
+      filter: brightness(50%);
+
+      .movie-text {
+        position: absolute;
+        display: block;
+      }
+
+      .carousel-caption.label{
+        display: none;
+      }
+    }
+  }
+}
+
+.home-banner{
+  .banner-img{
+    text-align: center;
+    width:100%;
+    height: auto;
+  }
+}
+
+.movie-list {
+  margin-top: 1em;
+
+  .controls {
+    margin-bottom: 1em;
+
+    .filter-controls{
+      text-align: left;
+      justify-content: space-around;
+
+      .btn {
+        border-radius: 4px;
+      }
+
+      .btn:hover {
+        background-color: darkorange;
+      }
+
+      .btn.active {
+        background-color: darkorange;
+      }
+
+      .dropdown {
+        max-width: 20%;
+        width: 100%;
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        max-height: 300%;
+        overflow-y: scroll;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+
+      }
+
+      .dropdown-content a:hover {background-color: #ddd;}
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+    }
+
+    .page-controls {
+      text-align: right;
+
+      button:disabled {
+        color: red;
+      }
+    }
+  }
+
+
+
+
+  .title {
+    text-align: center;
+    font-size: 3em;
+  }
+
+  .material-card {
+    background-color: mistyrose;
+  }
+
+  .material-card:hover {
+
+    .container, img {
+      //filter: brightness(60%);
+    }
+
+    .genres-list {
+      visibility: hidden;
+    }
+
+    div.txt {
+      visibility: visible;
+    }
+  }
+
+  .movie-list-item{
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    vertical-align: center;
+
+    div.txt {
+      position: absolute;
+      width: 90%;
+      visibility: hidden;
+      color: darkorange;
+      font: 700 1em 'Lato', sans-serif;
+      padding-top: 1em;
+    }
+
+    .container.ribbon {
+      --d:0.8em;
+      --c:red;
+      --f:0.5em;
+      position: relative;
+    }
+    .container.ribbon::before {
+      content: "COMING SOON";
+      font: 700 var(--f) 'Lato', sans-serif;
+      color: white;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: auto;
+      transform: translate(29%, -100%) rotate(45deg);
+      transform-origin: bottom left;
+      padding: 5px 35px calc(var(--d) + 5px);
+      background: linear-gradient(rgba(0,0,0,0.5) 0 0) bottom/100% var(--d) no-repeat var(--c);
+      clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            100% 100%,
+            calc(100% - var(--d)) calc(100% - var(--d)),
+            var(--d) calc(100% - var(--d)) , 0 100%
+        );
+      /* III : masking */
+      -webkit-mask:
+        linear-gradient( 135deg, transparent calc(50% - var(--d)*0.707),#fff 0) bottom left,
+        linear-gradient(-135deg, transparent calc(50% - var(--d)*0.707),#fff 0) bottom right;
+      -webkit-mask-size:300vmax 300vmax;
+      -webkit-mask-composite: destination-in;
+      mask-composite: intersect;
+    }
+
+    .movie-poster {
+      margin-top: 5%;
+      width: 95%;
+      height: auto;
+      display: inline-block;
+    }
+
+    .genres-list {
+      margin-left: 5%;
+      .col-10 {
+        text-align: left;
+      }
+      color: darkorange;
+      text-decoration: none;
+      font: 700 0.8em 'Lato', sans-serif;
+      width: calc(100% - 2em);
+      overflow: hidden;
+      display: inline;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+  }
+}
+
+.movie-detail {
+  position: relative;
+  .trailer-section {
+    background-color: #374785;
+    width: 100%;
+    padding-bottom: 4em;
+
+    .container {
+      text-align: center;
+
+      .title {
+        font-family: Andale Mono, monospace;
+        font-size: 4em;
+        color: white;
+        margin-bottom: 2em;
+      }
+      .trailer {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+      }
+    }
+
+    .col-sm-12 {
+      .trailer {
+        iframe {
+          width: 90vw;
+          height: 51vw;
+        }
+      }
+    }
+
+  }
+
+  .info-section {
+    background-color: ghostwhite;
+    padding: 4em 0;
+    .col-6 {
+      span {
+        font-size: 2em;
+        color: gold;
+      }
+      span.rating-txt {
+        margin-left:0.5em;
+      }
+    }
+    .movie-description {
+      margin-top: 3vh;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    table {
+      margin-top: 5vh;
+
+      tr {
+        vertical-align: top;
+        .tb-val {
+          padding-left: 4em;
+        }
+      }
+    }
+    .movie-img{
+      text-align: center;
+      .movie-card {
+        width: 80%;
+        height: auto;
+      }
+    }
+  }
+
+  .rating-section {
+    background-color: #24305E;
+    .title {
+      font-size: 3em;
+    }
+
+    i.star {
+      color: gold;
+    }
+  }
+
+  .openSchedule {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 3em;
+    span {
+      padding: 0.2em 2em;
+      border: 2px solid black;
+    }
+  }
+}
+
+.schedule {
+  .schedule-controls {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+
+  .date-selection {
+    button.active {
+      background-color: darkorange;
+    }
+    .btn-group {
+      width: 100%;
+      button {
+        width: 17%;
+        border: 1px solid black;
+        background-color: transparent;
+      }
+      #datePicker {
+        width: 25%;
+      }
+    }
+    #datePicker {
+      border:1px solid;
+    }
+
+  }
+  .movie-schedule .movie-poster {
+    display: flex;
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+  }
+
+  #no-movies-found {
+    text-align: center;
+    h1 {
+      margin: 2em;
+    }
+  }
+  hr {
+    margin: 1em;
+  }
+}
+
+.seat-selection {
+  display: table-row;
+
+  .row-label-cell{
+    width:5%;
+    border: none;
+    text-align: center;
+  }
+
+  .seat-label-cell {
+    height: 5%;
+    text-align: center;
+  }
+
+  table {
+    width:90%;
+    height: 180%;
+    margin-bottom: 2em;
+    border-collapse:collapse;
+  }
+
+  .hall-seat.occupied-seat {
+    background-color: red;
+  }
+
+  .hall-seat.selected-seat {
+    background-color: gray;
+  }
+
+  .hall-seat {
+    margin-left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: green;
+  }
+  td {
+  }
+}
+
+.reservation {
+  display: table;
+  min-height: max-content;
+  .ticket-selection {
+    display: table-row;
+    width: 100%;
+
+    h2, h5 {
+      margin-top:1em;
+    }
+
+    table {
+      margin: 1em;
+      width: 75%;
+    }
+
+    span{
+      margin-left: 1em;
+    }
+
+    .confirm-tickets {
+      margin: 1em;
+    }
+  }
+
+  .col-lg-6 {
+    padding-bottom: 20em;
+  }
+
+  .screen-location{
+    width: 90%;
+    height: 2em;
+    background-color: #c0c0c0;
+    text-align: center;
+    font-size: 1em;
+  }
+
+}
+
+
+
+
+
+.footer-cnt {
+  background-color: #24305E;
+
+  footer {
+    margin-top: 5em;
+    text-align: center;
+    color: ghostwhite;
+
+    a {
+      text-decoration: none;
+    }
+
+    a.btn {
+      color: white;
+    }
+  }
+}
+
+#movie-dash{
+  max-height: 80vh;
+  scroll-behavior: auto;
+  overflow-x: scroll;
+}
+
+#movie-dash-table{
+  td span {
+    text-align: center;
+  }
+  td i{
+    margin-right: 1em;
+  }
+}
+
+.admin-dash {
+
+  .active {
+    background-color: darkorange;
+    color: darkorange;
+  }
+
+
+  .stats {
+    margin: 2em auto;
+    display: flex;
+    justify-content: center;
+  }
+  .col-box {
+    display: flex;
+    justify-content: center;
+  }
+
+  .info-card {
+    position: relative;
+    height: 80%;
+    width: 17vw;
+
+    border: 1px solid black;
+    color: ghostwhite;
+    font-family: Andale Mono, monospace;
+    h3 {
+      margin-left: 0.2em;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: 3em;
+    }
+    p {
+      margin-left: 0.7em;
+      font-size: 1em;
+      margin-bottom: 3em;
+    }
+    margin: 0 0 10px;
+
+    .icon {
+      position: absolute;
+      top: 5%;
+      right: 10%;
+      font-size: 4em;
+    }
+    a {
+      position: absolute;
+      text-align: right;
+      bottom: 5%;
+      right: 7%;
+      display: block;
+      font-size: 0.8em;
+    }
+  }
+  .tickets {
+    background-color: dodgerblue;
+  }
+  .customers {
+    background-color: rgb(255, 176, 72);
+  }
+
+  .movies {
+    background-color: rgb(255, 74, 82);
+  }
+  .ratings {
+    background-color: rgb(35, 173, 159);
+  }
+
+  .revenue-graph {
+    text-align: center;
+    img {
+      width: auto;
+      height: auto;
+    }
+  }
+}

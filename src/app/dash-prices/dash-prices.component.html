@@ -1,0 +1,53 @@
+<div *ngIf="!checkLogin">
+  <app-not-found></app-not-found>
+</div>
+
+
+<div *ngIf="checkLogin()">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-11">
+        <app-dash-nav></app-dash-nav>
+
+        <button type="button" class="btn btn-dark">New Price</button>
+        <div id="price-dash">
+          <table id="price-dash-table" class="table table-striped table-bordered table-sm" cellspacing="0"
+                 width="100%">
+            <thead>
+            <tr>
+              <th class="th-sm">Id</th>
+              <th class="th-sm">Screen Type</th>
+              <th class="th-sm">Customer Type</th>
+              <th class="th-sm">Value (€)</th>
+              <th class="th-sm">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let price of allPrices">
+              <td>{{price.id}}</td>
+              <td>{{price.type}}</td>
+              <td>{{price.customerType}}</td>
+              <td>{{price.value}}</td>
+              <td>
+                <span>
+                  <button class="btn-dark"><i class="bi bi-trash-fill"></i></button>
+                  <button class="btn-dark"><i class="bi bi-pencil-square"></i></button>
+                </span>
+              </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <th class="th-sm">Id</th>
+              <th class="th-sm">Screen Type</th>
+              <th class="th-sm">Customer Type</th>
+              <th class="th-sm">Value (€)</th>
+              <th class="th-sm">Actions</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

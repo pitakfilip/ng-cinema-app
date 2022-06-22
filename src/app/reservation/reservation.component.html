@@ -1,0 +1,55 @@
+<div class="container reservation">
+  <div class="row justify-content-center">
+
+    <div *ngIf="!selectedTicketCount" class="col-10 ticket-selection">
+      <h2><span>Select amount of tickets</span></h2>
+      <h5><span>Currently {{freeTicketCount()}} tickets available</span></h5>
+
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>Price</th>
+          <th>Amount</th>
+        </tr>
+
+        <tr *ngFor="let price of prices; let i = index">
+          <td>{{screenType}} / {{price.customerType}}</td>
+          <td>{{price.value}}€</td>
+          <td>
+            <input type="number" id="{{price.customerType}}" value="0" min="0" max="5"
+                [(ngModel)]="ticketSelection[i]" (change)="verifyMax(i)">
+          </td>
+        </tr>
+      </table>
+
+      <span style="display: block;" id="total-price"><strong>Total: {{calcFinalPrice()}}€</strong></span>
+      <button type="button" class="btn btn-dark confirm-tickets" (click)="confirmTickets()">Confirm</button>
+    </div>
+
+    <div *ngIf="selectedTicketCount" class="col-sm-10 col-md-8 col-lg-6 seat-selection">
+      <div><h2>Select seats to reserve</h2></div>
+      <div class="screen-location">Screen</div>
+
+      <table>
+        <tr *ngFor="let row of rows">
+          <td *ngFor="let seat of seats" id="r{{row}}s{{seat}}"
+              [ngClass]="{'row-label-cell' : seat == 0 && row!= rows.length,
+                          'seat-label-cell' : row == rows.length && seat !=0,
+                          'corner-cell' : row == rows.length && seat == 0}">
+            <span *ngIf="seat == 0 && row!= rows.length" class="row-label">R{{row}}</span>
+            <span *ngIf="row == rows.length && seat !=0" class="seat-label">S{{seat}}</span>
+            <div *ngIf="row < rows.length && 0 < seat" class="hall-seat"
+                 (click)="clickSeat(row, seat)" [ngClass]="{'occupied-seat' : ticketState[row-1][seat-1]==1, 'selected-seat' : ticketState[row-1][seat-1]==2}">
+            </div>
+          </td>
+
+        </tr>
+      </table>
+
+      <button type="button" class="btn btn-dark" (click)="confirmSeats()">Confirm</button>
+<!--      <div style="margin-bottom: 5em;">x</div>-->
+    </div>
+
+
+  </div>
+</div>

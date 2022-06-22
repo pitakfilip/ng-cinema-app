@@ -1,0 +1,146 @@
+<div class="movie-detail">
+  <div class = trailer-section>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-11">
+
+          <span class="title">{{movie.name}}</span>
+
+          <div class="trailer">
+            <iframe [src] = 'getURL()' title="{{movie.name}}" ></iframe>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-11">
+
+          <div class="container movie-info">
+            <div class="row justify-content-center">
+              <div class="col-sm-10 col-lg-7">
+                <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-6 rating">
+
+                      <span class="stars-rating" *ngFor="let _ of movie.averageRating|repeat; let last=last">
+                        <i class="bi bi-star-fill"></i>
+                      </span>
+                      <span class="rating-txt">{{round(movie.averageRating)}}/5</span>
+
+                    </div>
+
+                    <div class="col-6 length">
+                      <span>
+                        <i class="bi bi-clock"></i>
+                      </span>
+                      <span class="rating-txt">{{movie.length}} min</span>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col movie-description">
+                      <span>{{movie.description}}</span>
+
+                      <table>
+                        <tr>
+                          <td>Genres</td>
+                          <td class="tb-val">
+                            <span class="genre" *ngFor="let genre of movie.genres; let last=last">
+                              <span class="genre-name" *ngIf="!last">{{genre.name}}, </span>
+                              <span class="genre-name" *ngIf="last">{{genre.name}}</span>
+                            </span>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>Director</td>
+                          <td class="tb-val">{{movie.director}}</td>
+                        </tr>
+                        <tr>
+                          <td>Actors</td>
+                          <td class="tb-val">{{movie.actors}}</td>
+                        </tr>
+                        <tr>
+                          <td>Release Year</td>
+                          <td class="tb-val">{{movie.releaseYear}}</td>
+                        </tr>
+                        <tr>
+                          <td>Audio Language</td>
+                          <td class="tb-val">{{movie.audio}}</td>
+                        </tr>
+                        <tr>
+                          <td>Subtitles</td>
+                          <td class="tb-val">{{movie.subtitles}}</td>
+                        </tr>
+
+                      </table>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-10 col-lg-5 movie-img">
+                <img class = "movie-card" src="https://dummyimage.com/300x400/C0C0C0/000000.png&text=MOVIE_PIC" title="{{movie.name}}" alt="">
+              </div>
+
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rating-section">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-11">
+
+          <div class="container">
+            <div class = "row justify-content-center">
+              <div class="col-sm-8 col-lg-4" *ngFor="let rating of recentRatings">
+
+                <section class="mx-auto my-5" style="max-width: 23rem;">
+                  <div class="card testimonial-card mt-2 mb-3">
+                    <div class="card-up aqua-gradient"></div>
+                    <div class="card-body text-center">
+                      <h4 class="card-title font-weight-bold">{{rating.userAcc.name}}</h4>
+                      <span class="stars-rating" *ngFor="let _ of rating.value|repeat">
+                        <i class="bi bi-star-fill star"></i>
+                      </span>
+                      <div>{{pretifyDate(rating.created)}}</div>
+                      <hr>
+                      <p><i class="bi bi-quote"></i>{{rating.comment}}</p>
+                    </div>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="openSchedule" routerLink="/schedule" routerLinkActive="active">
+    <span>RESERVE TICKETS NOW!</span>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-11">
+
+      <div class="container schedule">
+        <div class="row schedule-controls">
+
+          <div class="col-xs-12 col-md-6 date-selection">
+            <div class="btn-group" role="group">
+              <button type="button" id="day_0" [ngClass]="{'active' : daySelected==0}" (click)="dayClicked(0)">Today</button>
+              <button type="button" *ngFor="let i of 5 | repeat" id="{{'day_'+i}}"
+                      [ngClass]="{'active' : daySelected == i}" (click)="dayClicked(i)" >
+                {{dayOffsetName(i)}}
+              </button>
+              <input type="date" id="datePicker" name="datePicker" value="{{dateValue()}}"
+                     max="{{maxDateValue()}}" (change)="dateChange()">
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="row movie-schedule" *ngFor="let movieKey of mapScreenings().keys()">
+          <div class="container">
+            <div class="row justify-content-between">
+
+              <div class="col-sm-5 col-md-3">
+                <img class="movie-poster" src="https://dummyimage.com/150x200/C0C0C0/000000.png&text=MOVIE_PIC">
+              </div>
+
+              <div class="col-sm-7 col-md-9">
+
+                <span class="movie-title">
+                  <h2>{{movies.get(movieKey).name}}</h2>
+                </span>
+
+                <div class="container type-schedule">
+                  <div class="row justify-content-between" *ngFor="let typeKey of m.get(movieKey).keys(); let last = last">
+                    <span class="col-3">{{typeKey}}</span>
+
+                    <div class="col-8">
+                      <span class="my-2" *ngFor="let s of sortScreenings(m.get(movieKey).get(typeKey))">
+                        <button type="button" class="my-1 mx-1"
+                                (click)="makeReservation(s)">
+                          {{pretifyTime(s.time.toLocaleString())}}
+                        </button>
+                      </span>
+                    </div>
+
+                    <hr *ngIf="!last">
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <hr>
+        </div>
+
+<!--        TODO -->
+        <div *ngIf="empty" class="my-5" id="no-movies-found">
+          <h1>No movies found for this given day.</h1>
+          <h4>Please try a different day.</h4>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

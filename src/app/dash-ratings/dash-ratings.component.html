@@ -1,0 +1,57 @@
+<div *ngIf="!checkLogin">
+  <app-not-found></app-not-found>
+</div>
+
+
+<div *ngIf="checkLogin()">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-11">
+        <app-dash-nav></app-dash-nav>
+
+        <div id="rating-dash">
+          <table id="rating-dash-table" class="table table-striped table-bordered table-sm" cellspacing="0"
+                 width="100%">
+            <thead>
+            <tr>
+              <th class="th-sm">Id</th>
+              <th class="th-sm">Created</th>
+              <th class="th-sm">User Id</th>
+              <th class="th-sm">Movie</th>
+              <th class="th-sm">Value (1-5)</th>
+              <th class="th-sm">Comment</th>
+              <th class="th-sm">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let rating of allRatings">
+              <td>{{rating.id}}</td>
+              <td>{{rating.created}}</td>
+              <td>({{rating.userAcc.id}}) {{rating.userAcc.name}}</td>
+              <td>{{rating.movie}}</td>
+              <td>{{rating.value}}</td>
+              <td>{{rating.comment}}</td>
+              <td>
+                <span>
+                  <button class="btn-dark"><i class="bi bi-trash-fill"></i></button>
+                </span>
+              </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <th class="th-sm">Id</th>
+              <th class="th-sm">Created</th>
+              <th class="th-sm">User Id</th>
+              <th class="th-sm">Movie</th>
+              <th class="th-sm">Value (1-5)</th>
+              <th class="th-sm">Comment</th>
+              <th class="th-sm">Actions</th>
+            </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

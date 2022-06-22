@@ -1,0 +1,86 @@
+<div *ngIf="!checkLogin">
+
+</div>
+
+
+<div *ngIf="checkLogin()" class="admin-dash">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-11">
+        <app-dash-nav></app-dash-nav>
+
+        <div class="container stat-cont">
+          <div class="row stats justify-content-center">
+
+            <div class="col-md-6 col-12 col-box">
+              <div class="info-card movies">
+                <div class="inner-content">
+                  <h3>{{totalMovies()}}</h3>
+                  <p>Movies</p>
+                </div>
+                <div class="icon">
+                  <i class="bi bi-film"></i>
+                </div>
+                <a>More info <i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-12 col-box">
+              <div class="info-card tickets">
+                <div class="inner-content">
+                  <h3>{{totalTicketSold()}}</h3>
+                  <p>Tickets sold</p>
+                </div>
+                <div class="icon">
+                  <i class="bi bi-ticket-perforated-fill"></i>
+                </div>
+                <a>More info <i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-12 col-box">
+              <div class="info-card customers">
+                <div class="inner-content">
+                  <h3>{{totalCustomers()}}</h3>
+                  <p>Customers</p>
+                </div>
+                <div class="icon">
+                  <i class="bi bi-person-badge"></i>
+                </div>
+                <a>More info <i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-12 col-box">
+              <div class="info-card ratings">
+                <div class="inner-content">
+                  <h3>{{totalCustomers()}}</h3>
+                  <p>Positive Ratings</p>
+                </div>
+                <div class="icon">
+                  <i class="bi bi-hand-thumbs-up"></i>
+                </div>
+                <a>More info <i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row justify-content-center revenue-graph">
+            <div col="col-8 graph">
+              <img class="graph" src="https://dummyimage.com/750x350/c0c0c0/000.png&text=REVENUE+GRAPH">
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
